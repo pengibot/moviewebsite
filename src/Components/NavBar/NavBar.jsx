@@ -1,0 +1,50 @@
+import React from "react";
+import "./NavBar.css";
+import logo_light from "../../Assets/logo-black.png";
+import logo_dark from "../../Assets/logo-white.png";
+import search_icon_light from "../../Assets/search-w.png";
+import search_icon_dark from "../../Assets/search-b.png";
+import toggle_light from "../../Assets/night.png";
+import toggle_dark from "../../Assets/day.png";
+
+const NavBar = ({ theme, setTheme }) => {
+  const toggle_mode = () => {
+    theme === "light" ? setTheme("dark") : setTheme("light");
+  };
+
+  return (
+    <div className="navbar">
+      <img
+        src={theme === "light" ? logo_light : logo_dark}
+        alt=""
+        className="logo"
+      />
+      <ul>
+        <li>Home</li>
+        <li>Neural Network</li>
+        <li>Machine Learning</li>
+        <li>Large Language Models</li>
+      </ul>
+
+      <div className="search-box">
+        <input type="text" placeholder="Search" />
+        <img
+          src={theme === "light" ? search_icon_light : search_icon_dark}
+          alt=""
+          className="search-icon"
+        />
+      </div>
+
+      <img
+        onClick={() => {
+          toggle_mode();
+        }}
+        src={theme === "light" ? toggle_light : toggle_dark}
+        alt=""
+        className="toggle-icon"
+      />
+    </div>
+  );
+};
+
+export default NavBar;
